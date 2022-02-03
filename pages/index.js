@@ -14,9 +14,10 @@ export default function Home() {
 
 			<section className={styles.hero}>
 				<p>Finally Finish That Damn Puzzle.</p>
-				<p>Set the number of pieces</p>
+				<p>Set the puzzle count</p>
 				<p>Pick a date</p>
-				<p>Share your "chef-d'oeuvre"</p>
+				<p>Update progress</p>
+				<p>Share it with us!</p>
 			</section>
 		</div>
 	);
