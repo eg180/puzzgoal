@@ -90,4 +90,5 @@
 	padding: 0.5rem 1rem 0.5rem 1rem;
 	background-color: rgb(252, 221, 163);
 	border-radius: 5px;
+	cursor: pointer;
 }

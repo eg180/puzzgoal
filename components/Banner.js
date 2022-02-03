@@ -7,9 +7,15 @@ const Banner = () => {
 
 	return (
 		<div className={styles.layout}>
-			<h1 className={styles.site_title}>puzzGoal</h1>
+			<a onClick={() => router.push("/")}>
+				<h1 className={styles.site_title}>puzzGoal</h1>
+			</a>
 
-			<a onClick={() => router.push("/planpuzzle")}>
+			<a onClick={() => router.push("/mypuzzgoals")}>
+				<nav>My 🧩🥅</nav>
+			</a>
+
+			<a onClick={() => router.push("/planpuzzgoal")}>
 				<nav>Sign In</nav>
 			</a>
 		</div>

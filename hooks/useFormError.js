@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../pages/planpuzzle/planpuzzle.module.css";
+import styles from "../pages/planpuzzgoal/PlanPuzzGoal.module.css";
 
 const useFormError = (formValues, formSubmitted) => {
 	const puzzNameErrorStyle =

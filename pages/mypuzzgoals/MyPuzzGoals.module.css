@@ -1,0 +1,10 @@
+.layout {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	min-height: 100vh;
+	background-color: white;
+	min-width: 100vw;
+
+	color: #eee;
+}

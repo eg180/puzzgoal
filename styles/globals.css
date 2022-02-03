@@ -121,6 +121,10 @@ body {
 	/* font-family: "Righteous", cursive; */
 }
 
+a:hover {
+	cursor: pointer;
+}
+
 h1 {
 	font-family: "Vast Shadow", cursive;
 }

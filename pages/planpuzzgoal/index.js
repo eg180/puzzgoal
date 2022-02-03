@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
 import useFormError from "../../hooks/useFormError";
-import styles from "./planpuzzle.module.css";
+import styles from "./PlanPuzzGoal.module.css";
 
-const PlanPuzzle = () => {
+const PlanPuzzGoal = () => {
+	const router = useRouter();
 	const todaysDate = new Date().toISOString().split("T")[0];
 	const [formValues, setFormValues] = useState({
 		puzzle_name: "",
@@ -31,16 +34,23 @@ const PlanPuzzle = () => {
 			return;
 		}
 		setFormSubmitted(true);
-
-		console.log(formValues);
-
-		// check for missing values
+		toast("🦄 Now get your puzzle on! 🧩", {
+			position: toast.POSITION.TOP_RIGHT,
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+		});
+		router.push("/mypuzzgoals");
+		// console.log(formValues);
 	};
 
 	return (
 		<div className={styles.layout}>
 			<section className={styles.form_container}>
-				<h1>My Puzzle Plan</h1>
+				<h1>My Puzzle Planizzle</h1>
 
 				<form onSubmit={handleSubmit}>
 					<fieldset>
@@ -80,4 +90,4 @@ const PlanPuzzle = () => {
 	);
 };
 
-export default PlanPuzzle;
+export default PlanPuzzGoal;
