@@ -1,9 +1,10 @@
+import { SessionProvider } from "next-auth/react";
 import Banner from "../components/Banner";
 import { ToastContainer } from "react-toastify";
 import "../styles/globals.css";
 import "react-toastify/dist/ReactToastify.css";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ session, Component, ...pageProps }) {
 	return (
 		<>
 			<ToastContainer
@@ -17,9 +18,10 @@ function MyApp({ Component, pageProps }) {
 				draggable
 				pauseOnHover
 			/>
-
-			<Banner />
-			<Component {...pageProps} />
+			<SessionProvider session={session}>
+				<Banner />
+				<Component {...pageProps} />
+			</SessionProvider>
 			<ToastContainer />
 		</>
 	);
