@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useFormError from "../../hooks/useFormError";
 import styles from "./planpuzzle.module.css";
 
 const PlanPuzzle = () => {
@@ -9,18 +10,8 @@ const PlanPuzzle = () => {
 		goal_date: todaysDate,
 	});
 	const [formSubmitted, setFormSubmitted] = useState(false);
-	const puzzNameErrorStyle =
-		formValues.puzzle_name === "" &&
-		formSubmitted === true &&
-		styles.puzzle_name_error;
-
-	const piecesErrorStyle =
-		formValues.pieces === "" && formSubmitted === true && styles.pieces_error;
-
-	const goalDateErrorStyle =
-		formValues.goal_date === "" &&
-		formSubmitted === true &&
-		styles.goal_date_error;
+	const { puzzNameErrorStyle, piecesErrorStyle, goalDateErrorStyle } =
+		useFormError(formValues, formSubmitted);
 
 	const handleChange = (e) => {
 		setFormValues({
@@ -29,13 +20,20 @@ const PlanPuzzle = () => {
 		});
 	};
 
-	const highlightMissingFields = () => {};
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		setFormSubmitted(true);
+		if (
+			formValues.puzzle_name === "" ||
+			formValues.pieces === "" ||
+			formValues.goal_date === ""
+		) {
+			return;
+		}
+		setFormSubmitted(true);
+
 		console.log(formValues);
-		highlightMissingFields();
+
 		// check for missing values
 	};
 
