@@ -1,0 +1,22 @@
+.layout {
+	display: flex;
+	justify-content: space-around;
+	align-items: baseline;
+	padding: 1rem;
+	min-width: 100vw;
+	font-size: 3rem;
+	/* font-family: "Allerta Stencil", sans-serif; */
+	/* font-family: "Bangers", cursive; */
+	/* font-family: "Caesar Dressing", cursive; */
+	font-family: "Righteous", cursive;
+	/* font-family: "Vast Shadow", cursive; */
+	background-color: white;
+}
+
+.layout nav {
+	font-size: 1rem;
+}
+
+.site_title {
+	font-family: "Righteous", cursive;
+}
