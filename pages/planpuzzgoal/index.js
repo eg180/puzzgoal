@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
+import { API } from "../../utilities";
+import { useSession } from "next-auth/react";
 import useFormError from "../../hooks/useFormError";
 import styles from "./PlanPuzzGoal.module.css";
 
 const PlanPuzzGoal = () => {
 	const router = useRouter();
+	const { data: session } = useSession();
 	const todaysDate = new Date().toISOString().split("T")[0];
 	const [formValues, setFormValues] = useState({
 		puzzle_name: "",
@@ -23,7 +26,7 @@ const PlanPuzzGoal = () => {
 		});
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setFormSubmitted(true);
 		if (
@@ -35,6 +38,14 @@ const PlanPuzzGoal = () => {
 		}
 		setFormSubmitted(true);
 		// save to db and create toast once that's settled
+
+		const res = await fetch(`${API}/projects`, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ formValues, user_id: session.user.user_id }),
+		});
 
 		toast("🦄 Now get your puzzle on! 🧩", {
 			position: toast.POSITION.BOTTOM_CENTER,
