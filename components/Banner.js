@@ -1,5 +1,5 @@
 import React from "react";
-import { toast } from "react-toastify";
+
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useSession, signIn, signOut } from "next-auth/react";
@@ -10,23 +10,14 @@ const Banner = () => {
 	const router = useRouter();
 	const { data: session, status } = useSession();
 
-	const handleSignIn = (e) => {
+	const handleSignIn = async (e) => {
 		e.preventDefault();
 		try {
-			signIn("credentials", {
+			await signIn("credentials", {
 				redirect: false,
 				callbackUrl: `${BASEURL}`,
 				// email: "test",
 				// password: "test",
-			});
-			toast(`Hi, ${session?.user?.username}`, {
-				position: toast.POSITION.TOP_RIGHT,
-				autoClose: 5000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
 			});
 		} catch (err) {
 			console.log(err);

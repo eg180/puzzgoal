@@ -34,8 +34,10 @@ const PlanPuzzGoal = () => {
 			return;
 		}
 		setFormSubmitted(true);
+		// save to db and create toast once that's settled
+
 		toast("🦄 Now get your puzzle on! 🧩", {
-			position: toast.POSITION.TOP_RIGHT,
+			position: toast.POSITION.BOTTOM_CENTER,
 			autoClose: 5000,
 			hideProgressBar: false,
 			closeOnClick: true,
@@ -43,7 +45,6 @@ const PlanPuzzGoal = () => {
 			draggable: true,
 			progress: undefined,
 		});
-		router.push("/mypuzzgoals");
 		// console.log(formValues);
 	};
 
