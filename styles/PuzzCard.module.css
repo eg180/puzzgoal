@@ -1,0 +1,8 @@
+.layout {
+	display: flex;
+	justify-content: center;
+	background-image: url("/images/pinkpattern1.svg");
+	min-width: 30vw;
+	padding: 2rem 0 2rem 0;
+	color: black;
+}

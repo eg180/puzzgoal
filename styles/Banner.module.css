@@ -25,7 +25,39 @@
 }
 
 .layout nav ul li {
-	padding: 0.35rem;
+	padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+	margin: 1rem;
+	border-radius: 5px;
+}
+
+#goal_container {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: rgb(247, 242, 242);
+}
+
+#count {
+	position: absolute;
+	font-size: 0.65rem;
+	bottom: 1rem;
+	right: -0.5rem;
+	background-color: rgb(31, 216, 236);
+	border-radius: 10px;
+	padding: 10%;
+	color: rgb(254, 255, 254);
+	transition: all 2s ease-in-out;
+}
+
+#new_container {
+	background-color: rgb(154, 231, 158);
+}
+
+.avatar_frame span {
+	background-color: rgb(154, 219, 49);
+	font-size: 0.75rem;
+	color: rgb(87, 33, 33);
 }
 
 .avatar_frame p {

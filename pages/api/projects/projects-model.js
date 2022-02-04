@@ -2,6 +2,7 @@ const db = require("../../../data/dbConfig");
 
 module.exports = {
 	addProject,
+	getUserProjects,
 };
 
 // the object fed into this should have puzzle_name, pieces, goal_date
@@ -11,12 +12,12 @@ async function addProject(obj) {
 		const [{ id }] = await db("projects")
 			.insert({
 				puzzle_name: obj.formValues.puzzle_name,
-				pieces: obj.formValues.puzzle_name,
+				pieces: obj.formValues.pieces,
 				goal_date: obj.formValues.goal_date,
 			})
 			.returning("id");
 		let project_id = id;
-		await addUsertoProject(obj, project_id); // this is the project id
+		return await addUsertoProject(obj, project_id); // this is the project id
 	} catch (error) {
 		console.log(error);
 	}
@@ -29,7 +30,25 @@ async function addUsertoProject(obj, project_id) {
 			project_id: project_id,
 			user_id: obj.user_id,
 		});
+		return await getUserProjects(obj.user_id);
 	} catch (error) {
 		return console.log(error);
+	}
+}
+
+async function getUserProjects(user_id) {
+	try {
+		return await db("projects")
+			.select(
+				"projects.id",
+				"projects.puzzle_name",
+				"projects.pieces",
+				"projects.created_at",
+				"projects.goal_date"
+			)
+			.join("userprojects", "userprojects.project_id", "=", "projects.id")
+			.where("userprojects.user_id", user_id);
+	} catch (error) {
+		console.log(error);
 	}
 }

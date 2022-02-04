@@ -1,12 +1,15 @@
 import React from "react";
-
+import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { BASEURL, API } from "../utilities";
+
 import styles from "../styles/Banner.module.css";
 
-const Banner = () => {
+const Banner = (props) => {
+	const { count } = props;
+
 	const router = useRouter();
 	const { data: session, status } = useSession();
 
@@ -15,7 +18,7 @@ const Banner = () => {
 		try {
 			await signIn("credentials", {
 				redirect: false,
-				callbackUrl: `${BASEURL}`,
+				callbackUrl: `${BASEURL}/mypuzzgoals`,
 				// email: "test",
 				// password: "test",
 			});
@@ -28,7 +31,12 @@ const Banner = () => {
 	const handleSignOut = async (e) => {
 		try {
 			e.preventDefault();
-			signOut();
+			debugger;
+			signOut({
+				callbackUrl: `${BASEURL}`,
+			});
+
+			localStorage.clear();
 		} catch (err) {
 			console.log(err);
 		}
@@ -43,10 +51,13 @@ const Banner = () => {
 				<ul>
 					{status === "authenticated" && (
 						<>
-							<li>
+							<li id={styles.goal_container}>
+								<span id={styles.count}>
+									<p>{count === null ? "0" : count}</p>
+								</span>
 								<a onClick={() => router.push("/mypuzzgoals")}>My 🥅</a>
 							</li>
-							<li>
+							<li id={styles.new_container}>
 								<a onClick={() => router.push("/planpuzzgoal")}>New 🧩</a>
 							</li>
 							<li>
