@@ -46,6 +46,13 @@ exports.up = async (knex, Promise) => {
 		.createTable(userprojects, (userprojects) => {
 			userprojects.increments("id");
 			userprojects
+				.integer("user_id")
+				.unsigned()
+				.references("user_id")
+				.inTable("users")
+				.onDelete("CASCADE")
+				.onUpdate("CASCADE");
+			userprojects
 				.integer("project_id")
 				.unsigned()
 				.references("id")
