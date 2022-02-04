@@ -28,7 +28,12 @@ export default async function handler(req, res) {
 			}
 
 		case "DELETE":
-			res.status(405).end();
+			try {
+				const userProjects = await Projects.deleteProject(reqbod.project_id);
+				return res.status(201).json(userProjects);
+			} catch (error) {
+				res.status(401).json("An error occured.");
+			}
 			break;
 	}
 }

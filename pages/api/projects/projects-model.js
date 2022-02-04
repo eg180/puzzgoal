@@ -2,6 +2,7 @@ const db = require("../../../data/dbConfig");
 
 module.exports = {
 	addProject,
+	deleteProject,
 	getUserProjects,
 };
 
@@ -18,6 +19,23 @@ async function addProject(obj) {
 			.returning("id");
 		let project_id = id;
 		return await addUsertoProject(obj, project_id); // this is the project id
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+async function deleteProject(project_id) {
+	// delete from foreign / dependent table
+	try {
+		const [{ user_id }] = await db("userprojects")
+			.where({ project_id })
+			.del()
+			.returning("user_id");
+		// delete from independent table
+
+		await db("projects").where({ id: project_id }).del();
+		// now return updated active goals / projects
+		return await getUserProjects(user_id);
 	} catch (error) {
 		console.log(error);
 	}

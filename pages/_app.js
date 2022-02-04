@@ -13,6 +13,7 @@ function MyApp({ session, Component, ...pageProps }) {
 	const [locStorUserProjects, setLocStorUserProjects] = useState([]);
 	const [projCount, setProjCount] = useState("");
 
+	// after an update to projects, pass data from backend here
 	const updateUserProjects = (projectsArray) => {
 		setUserProjects(projectsArray);
 		setProjCount(projectsArray.length);

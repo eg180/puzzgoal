@@ -31,7 +31,6 @@ const Banner = (props) => {
 	const handleSignOut = async (e) => {
 		try {
 			e.preventDefault();
-			debugger;
 			signOut({
 				callbackUrl: `${BASEURL}`,
 			});

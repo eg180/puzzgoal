@@ -8,14 +8,19 @@ const MyPuzzGoals = (props) => {
 	return (
 		<div className={styles.layout}>
 			<section className={styles.cards_container}>
-				{projects?.length > 0 &&
+				{projects?.length > 0 ? (
 					projects.map((proj) => {
 						return (
 							<div className={styles.card} key={proj.id}>
 								<PuzzCard puzzle={proj} />
 							</div>
 						);
-					})}
+					})
+				) : (
+					<div className={styles.no_projects_container}>
+						<p>Plan your first project. 👆🏼</p>
+					</div>
+				)}
 			</section>
 		</div>
 	);
