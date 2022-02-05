@@ -11,9 +11,11 @@ const MyPuzzGoals = (props) => {
 				{projects?.length > 0 ? (
 					projects.map((proj) => {
 						return (
-							<div className={styles.card} key={proj.id}>
-								<PuzzCard puzzle={proj} />
-							</div>
+							<ul key={proj.id}>
+								<li className={styles.card}>
+									<PuzzCard puzzle={proj} />
+								</li>
+							</ul>
 						);
 					})
 				) : (

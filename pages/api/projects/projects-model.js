@@ -61,6 +61,7 @@ async function getUserProjects(user_id) {
 				"projects.id",
 				"projects.puzzle_name",
 				"projects.pieces",
+				"projects.completed_count",
 				"projects.created_at",
 				"projects.goal_date"
 			)

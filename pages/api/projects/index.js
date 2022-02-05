@@ -12,6 +12,8 @@ export default async function handler(req, res) {
 				if (user_id !== undefined) {
 					const userProjects = await Projects.getUserProjects(user_id);
 					return res.status(201).json(userProjects);
+				} else {
+					return res.status(401).json("Unauthorized");
 				}
 			} catch (error) {
 				res.status(401).json("Please Try Again Later");

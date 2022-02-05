@@ -4,7 +4,7 @@
 	flex-direction: column;
 	align-items: center;
 	min-height: 100vh;
-	background-color: rgb(191, 107, 107);
+	background-image: url("/images/pinkpattern1.svg");
 
 	min-width: 100vw;
 
@@ -15,13 +15,20 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	background-color: rgb(197, 212, 240);
+	min-width: 90vw;
+	min-height: 90vh;
+}
 
-	/* min-width: 80vw; */
+.cards_container .card {
+	margin: 2rem;
 }
 
 .card {
+	/* display: flex; */
+
 	padding: 1rem;
-	max-width: 25vw;
+	min-width: 100%;
 	margin: 2rem;
 }
 

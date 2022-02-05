@@ -39,6 +39,7 @@ exports.up = async (knex, Promise) => {
 			projects.increments("id");
 			projects.string("puzzle_name");
 			projects.string("pieces");
+			projects.string("completed_count").defaultTo("0");
 			projects.date("goal_date");
 			projects.timestamp("created_at").defaultTo(knex.fn.now());
 			projects.timestamp("updated_at").defaultTo(knex.fn.now());
