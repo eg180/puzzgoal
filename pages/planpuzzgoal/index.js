@@ -1,4 +1,6 @@
 import React, { useState, useContext } from "react";
+import dayjs from "dayjs";
+const relativeTime = require("dayjs/plugin/relativeTime");
 import { UpdateProjectsContext } from "../../contexts";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
@@ -11,11 +13,20 @@ const PlanPuzzGoal = () => {
 	const updateProjects = useContext(UpdateProjectsContext);
 	const router = useRouter();
 	const { data: session } = useSession();
+
 	const todaysDate = new Date().toISOString().split("T")[0];
+
+	function tomorrowsDate() {
+		const today = new Date();
+		const tomorrow = new Date(today);
+		tomorrow.setDate(tomorrow.getDate() + 1);
+		return tomorrow.toISOString().split("T")[0];
+	}
+
 	const [formValues, setFormValues] = useState({
 		puzzle_name: "",
 		pieces: "",
-		goal_date: todaysDate,
+		goal_date: tomorrowsDate(),
 	});
 	const [formSubmitted, setFormSubmitted] = useState(false);
 	const { puzzNameErrorStyle, piecesErrorStyle, goalDateErrorStyle } =
@@ -56,7 +67,7 @@ const PlanPuzzGoal = () => {
 			setFormValues({
 				puzzle_name: "",
 				pieces: "",
-				goal_date: todaysDate,
+				goal_date: tomorrowsDate(),
 			});
 			// set projects in _app using context
 			updateProjects(data);
@@ -78,6 +89,8 @@ const PlanPuzzGoal = () => {
 	return (
 		<div className={styles.layout}>
 			<section className={styles.form_container}>
+				{JSON.stringify(todaysDate)}
+				{JSON.stringify(tomorrowsDate())}
 				<h1>My Puzzle Planizzle</h1>
 
 				<form onSubmit={handleSubmit}>
@@ -109,7 +122,7 @@ const PlanPuzzGoal = () => {
 							name="goal_date"
 							value={formValues.goal_date}
 							onChange={handleChange}
-							min={todaysDate}
+							min={tomorrowsDate()}
 						></input>
 						<button type="submit">Set My PuzzGoal</button>
 					</fieldset>

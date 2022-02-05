@@ -44,8 +44,8 @@
 	bottom: 1rem;
 	right: -0.5rem;
 	background-color: rgb(31, 216, 236);
-	border-radius: 10px;
-	padding: 10%;
+	border-radius: 20px;
+	padding: 0.5rem 0.65rem 0.5rem 0.65rem;
 	color: rgb(254, 255, 254);
 	transition: all 2s ease-in-out;
 }
