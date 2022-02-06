@@ -154,3 +154,153 @@
 .daily_goal {
 	background-color: rgb(195, 227, 238);
 }
+
+.pie {
+	min-width: 55%;
+}
+
+@media all and (max-width: 750px) {
+	.pie {
+		max-width: 55%;
+	}
+
+	.title_container {
+		display: flex;
+		font-size: 1rem;
+		justify-content: space-around;
+	}
+
+	.title {
+		display: flex;
+		flex-direction: column;
+
+		justify-content: center;
+		font-family: "Bangers", cursive;
+		font-size: 2rem;
+		color: rgb(40, 36, 36);
+
+		padding: 0.5rem;
+		max-height: fit-content;
+
+		/* font-family: "Caesar Dressing", cursive; */
+		/* font-family: "Righteous", cursive; */
+	}
+
+	.see_format {
+		font-family: Arial, Helvetica, sans-serif;
+		color: grey;
+		font-size: 0.85rem;
+	}
+
+	.sub_title {
+		font-size: em;
+		/* font-family: "Caesar Dressing", cursive; */
+		font-family: "Righteous", cursive;
+		/* background-color: rgb(233, 215, 229); */
+		max-width: fit-content;
+		padding: 0.5rem;
+		margin: 0.75rem;
+	}
+
+	.delete_container {
+		align-self: flex-end;
+		background-color: tomato;
+		cursor: pointer;
+		padding: 2px;
+		border-radius: 5px;
+	}
+
+	.edit_container {
+		align-self: flex-end;
+		background-color: rgb(255, 196, 0);
+		cursor: pointer;
+	}
+
+	.time_left_display {
+		/* font-family: "Caesar Dressing", cursive; */
+
+		font-family: "Righteous", cursive;
+		color: rgb(240, 67, 28);
+		cursor: pointer;
+	}
+
+	.stats_section {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+		align-items: baseline;
+		padding: 1rem;
+		background-color: rgb(225, 226, 217);
+		background-color: transparent;
+	}
+
+	.stats_section > * {
+		padding: 0.25rem;
+	}
+
+	.bottom {
+		background-color: rgb(245, 249, 243);
+		background-color: transparent;
+		min-width: 100%;
+		display: flex;
+		justify-content: space-between;
+		padding: 1rem 0 1rem 0;
+	}
+	.bottom_left {
+		display: flex;
+		flex-direction: column;
+		max-width: 50%;
+	}
+
+	.bottom_right {
+		background-color: transparent;
+		max-width: 100%;
+	}
+
+	.layout form {
+		display: flex;
+		justify-content: baseline;
+		position: relative;
+		min-height: 1.5rem;
+	}
+
+	.layout input {
+		font-family: "Vast Shadow", cursive;
+		width: 8rem;
+		font-size: 1.5rem;
+		min-height: 1.25rem;
+		background-color: transparent;
+		/* border: none !important; */
+		border: none;
+		outline: rgb(19, 182, 231);
+	}
+
+	.layout form input::placeholder {
+		font-size: 0.55rem;
+	}
+
+	.layout input:focus {
+		outline: none !important;
+		/* border:1px solid red; */
+		border-bottom: solid 1px rgb(19, 182, 231);
+	}
+
+	.layout button {
+		cursor: pointer;
+		min-height: 2rem;
+	}
+
+	.clear {
+		background-color: transparent;
+		position: absolute;
+		top: 0.15rem;
+		right: 5.5rem;
+		border: none;
+
+		color: rgb(247, 175, 232);
+	}
+
+	.daily_goal {
+		background-color: rgb(195, 227, 238);
+	}
+}
