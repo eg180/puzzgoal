@@ -3,12 +3,13 @@ const db = require("../../../data/dbConfig");
 module.exports = {
 	addProject,
 	deleteProject,
+	updateProject,
 	getUserProjects,
 };
 
 // the object fed into this should have puzzle_name, pieces, goal_date
 async function addProject(obj) {
-	// id should relate to the phrase_id
+	// id should relate to the project_id
 	try {
 		const [{ id }] = await db("projects")
 			.insert({
@@ -19,6 +20,24 @@ async function addProject(obj) {
 			.returning("id");
 		let project_id = id;
 		return await addUsertoProject(obj, project_id); // this is the project id
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+// the object fed into this should have puzzle_name, pieces, goal_date
+async function updateProject(obj) {
+	// id should relate to the phrase_id
+	// return console.log("user_id from update proj func", user_id);
+
+	try {
+		await db("projects")
+			.update({
+				completed_count: obj.completed_count,
+			})
+			.where({ id: obj.project_id });
+
+		return await getUserProjects(obj.user_id);
 	} catch (error) {
 		console.log(error);
 	}
@@ -66,7 +85,8 @@ async function getUserProjects(user_id) {
 				"projects.goal_date"
 			)
 			.join("userprojects", "userprojects.project_id", "=", "projects.id")
-			.where("userprojects.user_id", user_id);
+			.where("userprojects.user_id", user_id)
+			.orderBy("created_at", "desc");
 	} catch (error) {
 		console.log(error);
 	}

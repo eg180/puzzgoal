@@ -20,7 +20,7 @@ const MyPuzzGoals = (props) => {
 					})
 				) : (
 					<div className={styles.no_projects_container}>
-						<p>Plan your first project. 👆🏼</p>
+						<p>Plan your puzzgoal 👆🏼</p>
 					</div>
 				)}
 			</section>

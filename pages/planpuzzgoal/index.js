@@ -80,6 +80,7 @@ const PlanPuzzGoal = () => {
 				draggable: true,
 				progress: undefined,
 			});
+			router.push("/mypuzzgoals");
 			// console.log(formValues);
 		} catch (error) {
 			console.log(error);
@@ -89,8 +90,6 @@ const PlanPuzzGoal = () => {
 	return (
 		<div className={styles.layout}>
 			<section className={styles.form_container}>
-				{JSON.stringify(todaysDate)}
-				{JSON.stringify(tomorrowsDate())}
 				<h1>My Puzzle Planizzle</h1>
 
 				<form onSubmit={handleSubmit}>
@@ -111,6 +110,7 @@ const PlanPuzzGoal = () => {
 							placeholder="How many pieces?"
 							type="number"
 							min="2"
+							maxLength={5}
 							value={formValues.pieces}
 							autoComplete="off"
 							onChange={handleChange}
